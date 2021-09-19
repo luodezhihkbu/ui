@@ -1,6 +1,6 @@
 <template>
   <div class="topnav">
-    <div class="logo">LOGO</div>
+    <div class="logo" @click="toggle">LOGO</div>
     <ul class="menu">
       <li>菜单1</li>
       <li>菜单2</li>
@@ -9,7 +9,18 @@
 </template>
 
 <script lang="ts">
-export default {};
+import { inject, Ref } from "vue";
+export default {
+  setup() {
+    // 用 inject 来获取 App.vue 提供的 asideVisible 的值；
+    // <Ref<boolean>> 表示值的类型为包含 boolean 的 Ref
+    const asideVisible = inject<Ref<boolean>>("asideVisible");
+    const toggle = () => {
+      asideVisible.value = !asideVisible.value; // 要用 asideVisible 的 value 属性来拿到它的值
+    };
+    return { toggle };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
