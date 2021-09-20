@@ -8,9 +8,10 @@ import { provide, ref } from "vue";
 export default {
   name: "App",
   setup() {
-    const asideVisible = ref(false);
-    // 用 provide 提供变量 asideVisible 的值，各组件可以用 inject 来获取
-    provide("asideVisible", asideVisible); 
+    const width = document.documentElement.clientWidth; // 获取屏幕宽度
+    const asideVisible = ref(width < 500 ? false : true); // ref 表示数据是响应式的
+    // 用 provide 提供变量 asideVisible 的值，各子组件可以用 inject 来获取
+    provide("asideVisible", asideVisible);
   },
 };
 </script>

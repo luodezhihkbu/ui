@@ -1,10 +1,11 @@
 <template>
   <div class="topnav">
-    <div class="logo" @click="toggle">LOGO</div>
+    <div class="logo">LOGO</div>
     <ul class="menu">
       <li>菜单1</li>
       <li>菜单2</li>
     </ul>
+    <span class="toggleAside" @click="toggleAside"></span>
   </div>
 </template>
 
@@ -15,10 +16,10 @@ export default {
     // 用 inject 来获取 App.vue 提供的 asideVisible 的值；
     // <Ref<boolean>> 表示值的类型为包含 boolean 的 Ref
     const asideVisible = inject<Ref<boolean>>("asideVisible");
-    const toggle = () => {
-      asideVisible.value = !asideVisible.value; // 要用 asideVisible 的 value 属性来拿到它的值
+    const toggleAside = () => {
+      asideVisible.value = !asideVisible.value; // 如果要改变 asideVisible 的值，要使用 value 属性
     };
-    return { toggle };
+    return { toggleAside };
   },
 };
 </script>
@@ -30,6 +31,8 @@ export default {
   padding: 16px;
   position: relative;
   z-index: 10;
+  justify-content: center;
+  align-items: center;
   > .logo {
     max-width: 6em;
     margin-right: auto;
@@ -40,6 +43,25 @@ export default {
     flex-wrap: nowrap;
     > li {
       margin: 0 1em;
+    }
+  }
+  > .toggleAside {
+    display: none;
+    width: 24px;
+    height: 24px;
+    background: red;
+    position: absolute;
+    left: 16px;
+  }
+  @media (max-width: 500px) {
+    > .menu {
+      display: none;
+    }
+    > .logo {
+      margin: 0 auto;
+    }
+    > .toggleAside {
+      display: inline-block;
     }
   }
 }
