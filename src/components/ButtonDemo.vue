@@ -3,6 +3,9 @@
   <h1>示例1</h1>
   <div>
     <Button>按钮</Button>
+    <Button theme="button">按钮</Button>
+    <Button theme="link">按钮</Button>
+    <Button theme="text">按钮</Button>
   </div>
 </template>
 
