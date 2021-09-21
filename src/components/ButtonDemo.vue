@@ -1,5 +1,14 @@
 <template>
+  <div>Button 示例</div>
+  <h1>示例1</h1>
   <div>
-    button
+    <Button>按钮</Button>
   </div>
 </template>
+
+<script>
+import Button from "../lib/Button.vue";
+export default {
+  components: { Button },
+};
+</script>
