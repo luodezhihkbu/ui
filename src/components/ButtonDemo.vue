@@ -17,7 +17,7 @@
     <div>
       <Button theme="link" size="big">大大大</Button>
       <Button theme="link">普普通</Button>
-      <Button theme="link" size="small" >小小小</Button>
+      <Button theme="link" size="small">小小小</Button>
     </div>
     <div>
       <Button theme="text" size="big">大大大</Button>
@@ -42,6 +42,13 @@
       <Button theme="text">普通文字按钮</Button>
       <Button theme="text" level="danger">危险文字按钮</Button>
     </div>
+  </div>
+  <h1>示例4</h1>
+  <div>
+    <!-- disabled 是 <button> 自身的属性，默认值为 true ，下面的 disabled 也可以写成 :disabled="true" -->
+    <Button disabled>禁用按钮</Button>
+    <Button theme="link" disabled>禁用链接按钮</Button>
+    <Button theme="text" disabled>禁用按钮</Button>
   </div>
 </template>
 
