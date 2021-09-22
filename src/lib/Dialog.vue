@@ -1,21 +1,23 @@
 <template>
   <template v-if="visible">
-    <div class="gulu-dialog-overlay" @click="OnClickOverlay"></div>
-    <div class="gulu-dialog-wrapper">
-      <div class="gulu-dialog">
-        <header>
-          <slot name="title" />
-          <span class="gulu-dialog-close" @click="close"></span>
-        </header>
-        <main>
-          <slot name="content" />
-        </main>
-        <footer>
-          <Button level="main" @click="ok">OK</Button>
-          <Button @click="cancel">Cancel</Button>
-        </footer>
+    <teleport to="body">
+      <div class="gulu-dialog-overlay" @click="OnClickOverlay"></div>
+      <div class="gulu-dialog-wrapper">
+        <div class="gulu-dialog">
+          <header>
+            <slot name="title" />
+            <span class="gulu-dialog-close" @click="close"></span>
+          </header>
+          <main>
+            <slot name="content" />
+          </main>
+          <footer>
+            <Button level="main" @click="ok">OK</Button>
+            <Button @click="cancel">Cancel</Button>
+          </footer>
+        </div>
       </div>
-    </div>
+    </teleport>
   </template>
 </template>
 
@@ -55,11 +57,14 @@ export default {
     如果存在 f1 并且执行完毕后 f1 的返回值不是 false，那么就调用 close() 来隐藏对话框 */
     const ok = () => {
       // props.ok?.() !== false 等价于 props.ok && props.ok() !==false
+      // @ts-ignore
       if (props.ok?.() !== false) {
         close();
       }
     };
     const cancel = () => {
+      // @ts-ignore
+      props.cancel?.();
       close();
     };
     return { close, OnClickOverlay, ok, cancel };
