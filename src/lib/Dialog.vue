@@ -1,22 +1,22 @@
 <template>
   <template v-if="visible">
-    <div class="gulu-dialog-overlay"></div>
+    <div class="gulu-dialog-overlay" @click="OnClickOverlay"></div>
     <div class="gulu-dialog-wrapper">
       <div class="gulu-dialog">
-        <header>标题 <span class="gulu-dialog-close"></span></header>
+        <header>
+          标题 <span class="gulu-dialog-close" @click="close"></span>
+        </header>
         <main>
           <p>第一行字</p>
           <p>第二行字</p>
         </main>
         <footer>
-          <Button level="main">OK</Button>
-          <Button>Cancel</Button>
+          <Button level="main" @click="ok">OK</Button>
+          <Button @click="cancel">Cancel</Button>
         </footer>
       </div>
     </div>
   </template>
-</template>
-  
 </template>
 
 <script lang="ts">
@@ -30,6 +30,39 @@ export default {
       type: Boolean,
       default: false,
     },
+    closeOnClickOverlay: {
+      type: Boolean,
+      default: true,
+    },
+    ok: {
+      type: Function,
+    },
+    cancel: {
+      type: Function,
+    },
+  },
+  setup(props, context) {
+    const close = () => {
+      context.emit("update:visible", false);
+    };
+    // 由父组件来控制点击遮罩层后是否隐藏对话框
+    const OnClickOverlay = () => {
+      if (props.closeOnClickOverlay) {
+        close();
+      }
+    };
+    /* 点击 ok 按钮后，判断父组件的 ok 属性是否存在 f1 函数，因为可能需要通过 f1 来执行某些事件，比如判断对话框是否输入了内容；
+    如果存在 f1 并且执行完毕后 f1 的返回值不是 false，那么就调用 close() 来隐藏对话框 */
+    const ok = () => {
+      // props.ok?.() !== false 等价于 props.ok && props.ok() !==false
+      if (props.ok?.() !== false) {
+        close();
+      }
+    };
+    const cancel = () => {
+      close();
+    };
+    return { close, OnClickOverlay, ok, cancel };
   },
 };
 </script>
