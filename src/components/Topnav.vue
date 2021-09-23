@@ -10,13 +10,25 @@
         <router-link to="/doc">文档</router-link>
       </li>
     </ul>
-    <span class="toggleAside" @click="toggleAside"></span>
+    <svg
+      v-if="toggleMenuButtonVisible"
+      class="toggleAside"
+      @click="toggleAside"
+    >
+      <use xlink:href="#icon-menu"></use>
+    </svg>
   </div>
 </template>
 
 <script lang="ts">
 import { inject, Ref } from "vue";
 export default {
+  props: {
+    toggleMenuButtonVisible: {
+      type: Boolean,
+      default: false,
+    },
+  },
   setup() {
     // 用 inject 来获取 App.vue 提供的 asideVisible 的值；
     // <Ref<boolean>> 表示值的类型为包含 boolean 的 Ref
@@ -59,9 +71,9 @@ $color: #007974;
   }
   > .toggleAside {
     display: none;
-    width: 24px;
-    height: 24px;
-    background: red;
+    width: 32px;
+    height: 32px;
+    background: fade-out(black, 0.9);
     position: absolute;
     left: 16px;
   }
