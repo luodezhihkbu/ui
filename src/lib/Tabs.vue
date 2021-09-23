@@ -1,20 +1,33 @@
 <template>
   <div class="gulu-tabs">
     <div class="gulu-tabs-nav">
-      <div class="gulu-tabs-nav-item" v-for="(t, index) in titles" :key="index">
+      <div
+        class="gulu-tabs-nav-item"
+        v-for="(t, index) in titles"
+        :key="index"
+        @click="select(t)"
+        :class="{ selected: t === selected }"
+      >
         {{ t }}
       </div>
     </div>
     <div class="gulu-tabs-content">
-      <!-- 用 component 来渲染 Tab 组件，相当于 <slot> -->
-      <component v-for="(c, index) in defaults" :is="c" :key="index" />
+      <!-- 用 <component> 来渲染 Tab 组件，相当于 <slot>；
+          注意如果只渲染了一个 <component> 也需要绑定 key -->
+      <component :is="currentTab" :key="currentTab.props.title" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import { computed } from "vue";
 import Tab from "./Tab.vue";
 export default {
+  props: {
+    selected: {
+      type: String,
+    },
+  },
   setup(props, context) {
     // 获取 TabDemo.vue 中 Tabs 组件里的子组件 Tab（相当于 Tabs 组件里 <slot> 的内容），返回值是数组类型
     const defaults = context.slots.default();
@@ -28,9 +41,18 @@ export default {
     const titles = defaults.map((tag) => {
       return tag.props.title;
     });
+    // currentTab 的值会变化，所以需要用 computed()
+    const currentTab = computed(() => {
+      return defaults.filter((tag) => tag.props.title === props.selected)[0];
+    });
+    const select = (title: string) => {
+      context.emit("update:selected", title);
+    };
     return {
       defaults,
       titles,
+      currentTab,
+      select,
     };
   },
 };
