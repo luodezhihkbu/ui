@@ -10,7 +10,8 @@
         <Button>查看代码</Button>
       </div>
       <div class="demo-code">
-        <pre>&lt;Switch v-model:value="bool" /&gt;</pre>
+        <!-- Switch1Demo 是变量，需要在 setup() 中 return -->
+        <pre>{{ Switch1Demo.__sourceCode }}</pre>
       </div>
     </div>
     <div class="demo">
@@ -22,7 +23,7 @@
         <Button>查看代码</Button>
       </div>
       <div class="demo-code">
-        <pre>&lt;Switch v-model:value="bool" disabled /&gt;</pre>
+        <pre>{{ Switch2Demo.__sourceCode }}</pre>
       </div>
     </div>
   </div>
@@ -30,15 +31,14 @@
 
 <script lang='ts'>
 import { ref } from "vue";
-import Switch from "../lib/Switch.vue";
 import Button from "../lib/Button.vue";
 import Switch1Demo from "./Switch1.demo.vue";
 import Switch2Demo from "./Switch2.demo.vue";
 export default {
-  components: { Switch, Button, Switch1Demo, Switch2Demo },
+  components: { Button, Switch1Demo, Switch2Demo },
   setup() {
     const bool = ref(false);
-    return { bool };
+    return { bool, Switch1Demo, Switch2Demo };
   },
 };
 </script>
