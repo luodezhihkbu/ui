@@ -2,12 +2,24 @@
   <div class="topnav">
     <router-link to="/" class="logo">
       <svg class="icon">
-        <use xlink:href="#icon-king"></use>
+        <use xlink:href="#icon-design"></use>
       </svg>
+      <span>Leautify-UI</span>
     </router-link>
     <ul class="menu">
       <li>
         <router-link to="/doc">文档</router-link>
+      </li>
+      <li>
+        <router-link to="/doc/switch">组件</router-link>
+      </li>
+      <li>
+        <a href="https://github.com">
+          <svg>
+            <use xlink:href="#icon-github2"></use>
+          </svg>
+          <span>GitHub</span>
+        </a>
       </li>
     </ul>
     <svg
@@ -42,8 +54,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$green: #02bcb0;
 $color: #007974;
 .topnav {
+  background: white;
   display: flex;
   padding: 16px;
   position: fixed;
@@ -54,11 +68,19 @@ $color: #007974;
   justify-content: center;
   align-items: center;
   > .logo {
-    max-width: 6em;
+    max-width: 12em;
     margin-right: auto;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
     > svg {
       width: 32px;
       height: 32px;
+      margin-right: 6px;
+    }
+    > span {
+      color: $green;
+      font-size: 22px;
     }
   }
   > .menu {
@@ -67,13 +89,27 @@ $color: #007974;
     flex-wrap: nowrap;
     > li {
       margin: 0 1em;
+      > a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        border-bottom: 2px solid white;
+        &:hover {
+          border-bottom: 2px solid #5aafbd;
+        }
+        > svg {
+          width: 16px;
+          height: 16px;
+          margin-right: 2px;
+        }
+      }
     }
   }
   > .toggleAside {
     display: none;
     width: 32px;
     height: 32px;
-    background: fade-out(black, 0.9);
     position: absolute;
     left: 16px;
   }

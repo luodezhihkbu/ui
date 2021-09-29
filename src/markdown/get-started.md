@@ -1,28 +1,40 @@
 # 开始使用
-请先[安装](#/doc/install)本组件库。
 
-然后在你的代码中写入下面的代码
+使用前请确保已[安装](#/doc/install)本组件库。
 
+## 完整引入
+
+```javascript
+import { Switch, Button, Dialog, Tabs } from "leautify-ui"
+import 'leautify-ui/dist/lib/leautify.css'
 ```
-import {Button, Tabs, Switch, Dialog} from "king-ui"
-```
 
-就可以使用我提供的组件了。
+在 `Vue` 文件中写入上面的代码便完成了组件库的引入，需要注意的是样式文件也需要一同引入。
+
+## 按需引入
+
+当然，你也可以根据需要，按需引入某一个或多个组件。
+
+```javascript
+import { Button } from "leautify-ui" // 只引入 Button 组件
+import 'leautify-ui/dist/lib/leautify.css'
+```
 
 ## Vue 单文件组件
 
 代码示例：
 
-```
+```html
 <template>
   <div>
     <Button>按钮</Button>
   </div>
 </template>
+
 <script>
-import {Button, Tabs, Switch, Dialog} from "king-ui"
+import { Switch, Button, Dialog, Tabs } from "leautify-ui"
 export default {
-  components: {Button}
+  components: { Button }
 }
 </script>
 ```

@@ -15,19 +15,19 @@
             <router-link to="/doc/get-started">开始使用</router-link>
           </li>
         </ol>
-        <h2>组件列表</h2>
+        <h2>组件</h2>
         <ol>
           <li>
-            <router-link to="/doc/switch">Switch 组件</router-link>
+            <router-link to="/doc/switch">Switch 开关</router-link>
           </li>
           <li>
-            <router-link to="/doc/button">Button 组件</router-link>
+            <router-link to="/doc/button">Button 按钮</router-link>
           </li>
           <li>
-            <router-link to="/doc/dialog">Dialog 组件</router-link>
+            <router-link to="/doc/dialog">Dialog 对话框</router-link>
           </li>
           <li>
-            <router-link to="/doc/tabs">Tabs 组件</router-link>
+            <router-link to="/doc/tabs">Tabs 标签页</router-link>
           </li>
         </ol>
       </aside>
@@ -51,15 +51,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.router-link-active {
-  text-decoration: underline;
-}
+$green: #02bcb0;
 .layout {
   display: flex;
   flex-direction: column;
   height: 100vh;
   > .nav {
     flex-shrink: 0;
+    border-bottom: 1px solid #e6e6e6;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
   }
   > .content {
     flex-grow: 1;
@@ -70,16 +70,17 @@ export default {
       padding-left: 0;
     }
     > aside {
-      background: lightblue;
+      background: white;
       width: 150px;
       padding: 16px 0;
       position: fixed;
       top: 0;
       left: 0;
-      padding-top: 70px;
+      margin-top: 70px;
       height: 100%;
       flex-shrink: 0;
       z-index: 10;
+      border-right: 1px solid #e6e6e6;
       > h2 {
         margin-bottom: 4px;
         padding: 0 16px;
@@ -92,14 +93,16 @@ export default {
             text-decoration: none;
           }
           .router-link-active {
-            background: white;
+            background: #f3fffe;
+            border-right: 2px solid #5aafbd;
+            color: $green;
           }
         }
       }
     }
     > main {
       flex-grow: 1;
-      padding: 16px;
+      padding: 26px;
       background: white;
       overflow: auto;
     }

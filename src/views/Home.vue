@@ -1,13 +1,23 @@
 <template>
   <div class="topnavAndBanner">
-    <Topnav />
+    <div class="logo">
+      <svg>
+        <use xlink:href="#icon-design"></use>
+      </svg>
+      <span>Leautify-UI</span>
+    </div>
     <div class="banner">
-      <h1>UI</h1>
-      <h2>一个厉害的 UI 框架</h2>
-      <p class="actions">
-        <a href="https://github.com">GitHub</a>
-        <router-link to="/doc">开始</router-link>
-      </p>
+      <p class="name">Leautify-UI</p>
+      <h2>一个简洁好用的 UI 组件库</h2>
+      <div class="actions">
+        <router-link to="/doc">开始使用</router-link>
+        <a href="https://github.com">
+          <svg>
+            <use xlink:href="#icon-github"></use>
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </div>
     </div>
   </div>
   <div class="features">
@@ -46,31 +56,57 @@ export default {
 
 <style lang="scss" scoped>
 $green: #02bcb0;
-$border-radius: 4px;
 $color: #007974;
+$border-radius: 18px;
 .topnavAndBanner {
   background: linear-gradient(
     145deg,
     rgba(227, 255, 253, 1) 0%,
     rgba(183, 233, 230, 1) 100%
   );
+  .logo {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    > svg {
+      width: 32px;
+      height: 32px;
+      margin-right: 6px;
+    }
+    > span {
+      color: $green;
+      font-size: 22px;
+    }
+  }
   clip-path: ellipse(80% 60% at 50% 40%);
   .banner {
-    color: $color;
-    padding: 100px 0;
+    color: $green;
+    padding: 80px 0 100px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    > .name {
+      font-size: 38px;
+    }
     > .actions {
-      padding: 8px 0;
+      padding: 16px 0;
+      display: flex;
+      align-items: center;
       a {
         background: $green;
         color: white;
         margin: 0 8px;
-        display: inline-block;
-        padding: 8px 24px;
+        padding: 6px 28px;
         border-radius: $border-radius;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        > svg {
+          width: 16px;
+          height: 16px;
+          margin-right: 2px;
+        }
         &:hover {
           text-decoration: none;
         }
