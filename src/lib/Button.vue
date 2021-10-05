@@ -9,15 +9,11 @@
 import { computed } from "vue";
 export default {
   props: {
-    theme: {
+    type: {
       type: String,
       default: "button",
     },
     size: {
-      type: String,
-      default: "normal",
-    },
-    level: {
       type: String,
       default: "normal",
     },
@@ -31,12 +27,12 @@ export default {
     },
   },
   setup(props) {
-    const { theme, size, level } = props;
+    const { type, size, loading } = props;
     const classes = computed(() => {
       return {
-        [`gulu-theme-${theme}`]: theme,
+        [`gulu-type-${type}`]: type,
         [`gulu-size-${size}`]: size,
-        [`gulu-level-${level}`]: level,
+        [`gulu-loading-${loading}`]: loading,
       };
     });
     return { classes };
@@ -52,6 +48,8 @@ $blue: #40a9ff;
 $radius: 4px;
 $red: red;
 $grey: grey;
+$dark-green: #5aafbd;
+$green: #02bcb0;
 .gulu-button {
   box-sizing: border-box;
   height: $h;
@@ -72,8 +70,8 @@ $grey: grey;
   }
   &:hover,
   &:focus {
-    color: $blue;
-    border-color: $blue;
+    color: $green;
+    border-color: $dark-green;
   }
   &:focus {
     outline: none;
@@ -81,16 +79,36 @@ $grey: grey;
   &::-moz-focus-inner {
     border: 0;
   }
-  &.gulu-theme-link {
-    border-color: transparent;
-    box-shadow: none;
-    color: $blue;
+  &.gulu-type-primary {
+    background: $green;
+    color: white;
+    border-color: $green;
     &:hover,
     &:focus {
-      color: lighten($blue, 10%);
+      background: darken($green, 10%);
+      border-color: darken($green, 10%);
     }
   }
-  &.gulu-theme-text {
+  &.gulu-type-danger {
+    background: $red;
+    border-color: $red;
+    color: white;
+    &:hover,
+    &:focus {
+      background: darken($red, 10%);
+      border-color: darken($red, 10%);
+    }
+  }
+  &.gulu-type-link {
+    border-color: transparent;
+    box-shadow: none;
+    color: $green;
+    &:hover,
+    &:focus {
+      color: lighten($green, 10%);
+    }
+  }
+  &.gulu-type-text {
     border-color: transparent;
     box-shadow: none;
     color: inherit;
@@ -109,67 +127,33 @@ $grey: grey;
     height: 20px;
     padding: 0 4px;
   }
-  &.gulu-theme-button {
-    &.gulu-level-main {
-      background: $blue;
-      color: white;
-      border-color: $blue;
-      &:hover,
-      &:focus {
-        background: darken($blue, 10%);
-        border-color: darken($blue, 10%);
-      }
-    }
-    &.gulu-level-danger {
-      background: $red;
-      border-color: $red;
-      color: white;
-      &:hover,
-      &:focus {
-        background: darken($red, 10%);
-        border-color: darken($red, 10%);
-      }
-    }
-  }
-  &.gulu-theme-link {
-    &.gulu-level-danger {
-      color: $red;
-      &:hover,
-      &:focus {
-        color: darken($red, 10%);
-      }
-    }
-  }
-  &.gulu-theme-text {
-    &.gulu-level-main {
-      color: $blue;
-      &:hover,
-      &:focus {
-        color: darken($blue, 10%);
-      }
-    }
-    &.gulu-level-danger {
-      color: $red;
-      &:hover,
-      &:focus {
-        color: darken($red, 10%);
-      }
-    }
-  }
-  &.gulu-theme-button {
+  &.gulu-type-button {
     &[disabled] {
       cursor: not-allowed;
-      color: $grey;
-      &:hover {
-        border-color: $grey;
-      }
+      border-color: lighten($border-color, 10%);
+      color: lighten($color, 30%);
     }
   }
-  &.gulu-theme-link,
-  &.gulu-theme-text {
+  &.gulu-type-primary {
     &[disabled] {
       cursor: not-allowed;
-      color: $grey;
+      border-color: lighten($green, 30%);
+      background: lighten($green, 30%);
+    }
+  }
+  &.gulu-type-danger {
+    &[disabled] {
+      cursor: not-allowed;
+      border-color: lighten($red, 30%);
+      background: lighten($red, 30%);
+    }
+  }
+  &.gulu-loading-true {
+    cursor: default;
+    &:hover,
+    &:focus {
+      color: $color;
+      border-color: $border-color;
     }
   }
   > .gulu-loadingIndicator {
@@ -178,10 +162,37 @@ $grey: grey;
     display: inline-block;
     margin-right: 4px;
     border-radius: 8px;
-    border-color: $blue $blue $blue transparent;
+    border-color: $green $green $green transparent;
     border-style: solid;
     border-width: 2px;
     animation: gulu-spin 1s infinite linear;
+    &:hover,
+    &:focus {
+      color: $color;
+      border-color: $border-color;
+    }
+  }
+  &.gulu-type-primary {
+    &.gulu-loading-true {
+      cursor: default;
+      &:hover,
+      &:focus {
+        color: white;
+        border-color: $green;
+        background: $green;
+      }
+    }
+    > .gulu-loadingIndicator {
+      width: 14px;
+      height: 14px;
+      display: inline-block;
+      margin-right: 4px;
+      border-radius: 8px;
+      border-color: white white white transparent;
+      border-style: solid;
+      border-width: 2px;
+      animation: gulu-spin 1s infinite linear;
+    }
   }
 }
 @keyframes gulu-spin {

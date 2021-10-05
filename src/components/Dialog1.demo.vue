@@ -1,22 +1,14 @@
-<demo>
-常规使用
-</demo>
+<demo>基础用法</demo>
 
 <template>
   <div>
-    <Button @click="toggle">打开对话框</Button>
-    <Dialog
-      v-model:visible="bool"
-      :closeOnClickOverlay="false"
-      :ok="f1"
-      :cancel="f2"
-    >
+    <Button type="primary" @click="toggle">打开弹出框</Button>
+    <Dialog v-model:visible="bool" :closeOnClickOverlay="false" :ok="fn">
       <template v-slot:title>
-        <strong>加粗的标题</strong>
+        <strong>标题</strong>
       </template>
       <template v-slot:content>
-        <strong>hi</strong>
-        <div>hi2</div>
+        <div>这是一段内容</div>
       </template>
     </Dialog>
   </div>
@@ -33,15 +25,8 @@ export default {
     const toggle = () => {
       bool.value = !bool.value;
     };
-    const f1 = () => {
-      if ("某条件成立") {
-        return true; // 或者不返回值
-      } else {
-        return false;
-      }
-    };
-    const f2 = () => {};
-    return { bool, toggle, f1, f2 };
+    const fn = () => {};
+    return { bool, toggle, fn };
   },
 };
 </script>

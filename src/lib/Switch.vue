@@ -22,6 +22,7 @@ export default {
 <style lang="scss" scoped>
 $h: 22px;
 $h2: $h - 4px;
+$green: #02bcb0;
 .gulu-switch {
   height: $h;
   width: $h * 2;
@@ -40,7 +41,7 @@ $h2: $h - 4px;
     transition: all 250ms; // 表示如果 span 任意一个属性的值的发生变化了，变化的时间为 250ms
   }
   &.gulu-checked {
-    background: #1890ff;
+    background: $green;
     > span {
       // 可以理解为，先把 left 设为 button 的宽度，再减去 $h2 和 2px；
       // $h2 是变量，所以要使用 #{}

@@ -12,8 +12,8 @@
             <slot name="content" />
           </main>
           <footer>
-            <Button level="main" @click="ok">OK</Button>
-            <Button @click="cancel">Cancel</Button>
+            <Button @click="close">取消</Button>
+            <Button type="primary" @click="ok">确定</Button>
           </footer>
         </div>
       </div>
@@ -62,12 +62,7 @@ export default {
         close();
       }
     };
-    const cancel = () => {
-      // @ts-ignore
-      props.cancel?.();
-      close();
-    };
-    return { close, OnClickOverlay, ok, cancel };
+    return { close, OnClickOverlay, ok };
   },
 };
 </script>
@@ -106,7 +101,7 @@ $border-color: #d9d9d9;
     font-size: 20px;
   }
   > main {
-    padding: 12px 16px;
+    padding: 16px 16px;
   }
   > footer {
     border-top: 1px solid $border-color;

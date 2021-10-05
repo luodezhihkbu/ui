@@ -52,6 +52,8 @@ export default {
 
 <style lang="scss" scoped>
 $green: #02bcb0;
+$light-green: #f3fffe;
+$dark-green: #5aafbd;
 .layout {
   display: flex;
   flex-direction: column;
@@ -93,8 +95,8 @@ $green: #02bcb0;
             text-decoration: none;
           }
           .router-link-active {
-            background: #f3fffe;
-            border-right: 2px solid #5aafbd;
+            background: $light-green;
+            border-right: 2px solid $dark-green;
             color: $green;
           }
         }
@@ -105,6 +107,9 @@ $green: #02bcb0;
       padding: 26px;
       background: white;
       overflow: auto;
+      @media (min-width: 500px) {
+      padding: 26px 90px;
+    }
     }
   }
 }

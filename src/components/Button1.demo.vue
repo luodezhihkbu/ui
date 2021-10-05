@@ -1,12 +1,12 @@
-<demo>
-常规使用
-</demo>
+<demo>按钮类型</demo>
 
 <template>
   <div>
-    <Button>按钮</Button>
-    <Button theme="link">按钮</Button>
-    <Button theme="text">按钮</Button>
+    <Button>默认按钮</Button>
+    <Button type="primary">主要按钮</Button>
+    <Button type="danger">危险按钮</Button>
+    <Button type="link">链接</Button>
+    <Button type="text">文本</Button>
   </div>
 </template>
 

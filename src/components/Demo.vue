@@ -1,6 +1,7 @@
 <template>
+  <h2>{{ component.__sourceCodeTitle }}</h2>
   <div class="demo">
-    <h2>{{ component.__sourceCodeTitle }}</h2>
+    <span class="tip" v-html="tip"></span>
     <div class="demo-component">
       <component :is="component" />
     </div>
@@ -23,9 +24,10 @@ export default {
   components: { Button },
   props: {
     component: Object,
+    tip: String,
   },
   setup(props) {
-    const codeVisible = ref(false);
+    const codeVisible = ref(true);
     const showCode = () => (codeVisible.value = true);
     const hideCode = () => (codeVisible.value = false);
     const html = computed(() => {
@@ -42,16 +44,19 @@ export default {
 
 <style lang="scss" scoped>
 $border-color: #d9d9d9;
+h2 {
+  padding-top: 32px;
+}
 .demo {
   border: 1px solid $border-color;
-  margin: 16px 0 32px;
-  > h2 {
-    font-size: 20px;
+  margin-top: 16px;
+  > .tip {
+    display: block;
     padding: 8px 16px;
-    border-bottom: 1px solid $border-color;
   }
   &-component {
     padding: 16px;
+    border-top: 1px solid $border-color;
   }
   &-actions {
     padding: 8px 16px;

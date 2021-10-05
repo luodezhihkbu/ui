@@ -1,6 +1,4 @@
-<demo>
-支持 disabled
-</demo>
+<demo>禁用状态</demo>
 
 <template>
   <Switch v-model:value="bool" disabled />

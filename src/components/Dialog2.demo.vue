@@ -1,10 +1,8 @@
-<demo>
-一键打开 Dialog
-</demo>
+<demo>用函数打开弹出框</demo>
 
 <template>
   <div>
-    <Button @click="showDialog">打开对话框</Button>
+    <Button type="primary" @click="showDialog">打开弹出框</Button>
   </div>
 </template>
 
@@ -18,13 +16,8 @@ export default {
     const showDialog = () => {
       openDialog({
         title: h("strong", {}, "标题"),
-        content: "你好",
-        ok() {
-          console.log("ok");
-        },
-        cancel() {
-          console.log("cancel");
-        },
+        content: "这是一段内容",
+        ok() {},
       });
     };
     return { showDialog };

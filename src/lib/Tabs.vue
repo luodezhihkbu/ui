@@ -90,7 +90,8 @@ export default {
 </script>
 
 <style lang="scss">
-$blue: #40a9ff;
+$green: #02bcb0;
+$dark-green: #5aafbd;
 $color: #333;
 $border-color: #d9d9d9;
 .gulu-tabs {
@@ -107,13 +108,13 @@ $border-color: #d9d9d9;
         margin-left: 0;
       }
       &.selected {
-        color: $blue;
+        color: $green;
       }
     }
     &-indicator {
       position: absolute;
       height: 3px;
-      background: $blue;
+      background: $dark-green;
       left: 0;
       bottom: -1px;
       transition: all 250ms;

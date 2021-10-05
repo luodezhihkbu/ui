@@ -55,7 +55,7 @@ export default {
 
 <style lang="scss" scoped>
 $green: #02bcb0;
-$color: #007974;
+$dark-green: #5aafbd;
 .topnav {
   background: white;
   display: flex;
@@ -96,7 +96,7 @@ $color: #007974;
         text-decoration: none;
         border-bottom: 2px solid white;
         &:hover {
-          border-bottom: 2px solid #5aafbd;
+          border-bottom: 2px solid $dark-green;
         }
         > svg {
           width: 16px;

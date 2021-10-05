@@ -1,6 +1,4 @@
-<demo>
-常规用法
-</demo>
+<demo>基础用法</demo>
 
 <template>
   <Switch v-model:value="bool" />
@@ -14,7 +12,7 @@ export default {
     Switch,
   },
   setup() {
-    const bool = ref(false);
+    const bool = ref(true);
     return {
       bool,
     };
