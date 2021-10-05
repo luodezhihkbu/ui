@@ -12,7 +12,7 @@
             <slot name="content" />
           </main>
           <footer>
-            <Button @click="close">取消</Button>
+            <Button :class="type" @click="close">取消</Button>
             <Button type="primary" @click="ok">确定</Button>
           </footer>
         </div>
@@ -28,6 +28,10 @@ export default {
     Button,
   },
   props: {
+    type: {
+      type: String,
+      default: "confirm",
+    },
     visible: {
       type: Boolean,
       default: false,
@@ -107,6 +111,9 @@ $border-color: #d9d9d9;
     border-top: 1px solid $border-color;
     padding: 12px 16px;
     text-align: right;
+    > .alert {
+      display: none;
+    }
   }
   &-close {
     position: relative;

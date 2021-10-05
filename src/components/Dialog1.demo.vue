@@ -1,9 +1,9 @@
-<demo>基础用法</demo>
+<demo>提示弹出框</demo>
 
 <template>
   <div>
     <Button type="primary" @click="toggle">打开弹出框</Button>
-    <Dialog v-model:visible="bool" :closeOnClickOverlay="false" :ok="fn">
+    <Dialog type="alert" v-model:visible="bool" :closeOnClickOverlay="false">
       <template v-slot:title>
         <strong>标题</strong>
       </template>
@@ -25,8 +25,7 @@ export default {
     const toggle = () => {
       bool.value = !bool.value;
     };
-    const fn = () => {};
-    return { bool, toggle, fn };
+    return { bool, toggle };
   },
 };
 </script>

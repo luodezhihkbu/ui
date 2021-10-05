@@ -18,13 +18,13 @@
         <h2>组件</h2>
         <ol>
           <li>
-            <router-link to="/doc/switch">Switch 开关</router-link>
-          </li>
-          <li>
             <router-link to="/doc/button">Button 按钮</router-link>
           </li>
           <li>
-            <router-link to="/doc/dialog">Dialog 对话框</router-link>
+            <router-link to="/doc/dialog">Dialog 弹出框</router-link>
+          </li>
+          <li>
+            <router-link to="/doc/switch">Switch 开关</router-link>
           </li>
           <li>
             <router-link to="/doc/tabs">Tabs 标签页</router-link>
@@ -108,8 +108,8 @@ $dark-green: #5aafbd;
       background: white;
       overflow: auto;
       @media (min-width: 500px) {
-      padding: 26px 90px;
-    }
+        padding: 26px 100px;
+      }
     }
   }
 }
