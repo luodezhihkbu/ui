@@ -14,7 +14,7 @@
         <router-link to="/doc/switch">组件</router-link>
       </li>
       <li>
-        <a href="https://github.com">
+        <a href="https://github.com/luodezhihkbu/ui">
           <svg>
             <use xlink:href="#icon-github2"></use>
           </svg>

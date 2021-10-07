@@ -11,7 +11,7 @@
       <h2>一个简洁好用的 UI 组件库</h2>
       <div class="actions">
         <router-link to="/doc">开始使用</router-link>
-        <a href="https://github.com">
+        <a href="https://github.com/luodezhihkbu/ui">
           <svg>
             <use xlink:href="#icon-github"></use>
           </svg>
