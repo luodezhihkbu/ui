@@ -5,7 +5,7 @@
 ## 完整引入
 
 ```javascript
-import { Switch, Button, Dialog, Tabs } from "leautify-ui"
+import { Button, Dialog, Switch, Tabs } from "leautify-ui"
 import 'leautify-ui/dist/lib/leautify.css'
 ```
 
@@ -32,7 +32,7 @@ import 'leautify-ui/dist/lib/leautify.css'
 </template>
 
 <script>
-import { Switch, Button, Dialog, Tabs } from "leautify-ui"
+import { Button, Dialog, Switch, Tabs } from "leautify-ui"
 export default {
   components: { Button }
 }
