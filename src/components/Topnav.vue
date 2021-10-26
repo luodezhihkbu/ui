@@ -11,7 +11,7 @@
         <router-link to="/doc">文档</router-link>
       </li>
       <li>
-        <router-link to="/doc/switch">组件</router-link>
+        <router-link to="/doc/button">组件</router-link>
       </li>
       <li>
         <a href="https://github.com/luodezhihkbu/ui">
